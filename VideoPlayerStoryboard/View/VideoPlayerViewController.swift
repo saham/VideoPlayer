@@ -16,6 +16,10 @@ class VideoPlayerViewController: UIViewController {
     var apiManager = apiCall.shared
     var player = AVPlayer()
     var shouldPlay = false
+    let playButton = UIButton(frame: .zero)
+    let previousButton = UIButton(frame: .zero)
+    let nextButton = UIButton(frame: .zero)
+    
     // MARK: - View LifeCycle
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -23,6 +27,8 @@ class VideoPlayerViewController: UIViewController {
             do {
                 if let model = try await apiManager.getAllVideos() {
                     self.videoModel = model
+                    setupPlayer(forVideo: self.videoModel?[1])
+                    setupPlayButton()
                 }
             } catch let error {
                 print(error.localizedDescription)
@@ -40,10 +46,33 @@ class VideoPlayerViewController: UIViewController {
         }
     }
     func changePlayerStatus(player avPlayer:AVPlayer, play status:Bool) {
-        if status, avPlayer.status == .readyToPlay {
+        if status {
             avPlayer.play()
+            playButton.setImage(constant.pauseImage, for: [])
         } else {
             avPlayer.pause()
+            playButton.setImage(constant.playImage, for: [])
         }
+    }
+    func setupPlayButton() {
+        playerView.addSubview(playButton)
+        NSLayoutConstraint.activate([
+            playButton.widthAnchor.constraint(equalToConstant: constant.largeButtonWidth ),
+            playButton.heightAnchor.constraint(equalToConstant: constant.largeButtonWidth ),
+            playButton.centerXAnchor.constraint(equalTo: playerView.centerXAnchor),
+            playButton.centerYAnchor.constraint(equalTo: playerView.centerYAnchor)
+        ])
+        playButton.layer.borderColor = constant.buttonBoarderColor
+        playButton.layer.borderWidth = constant.buttonBorderWidth
+        playButton.translatesAutoresizingMaskIntoConstraints = false
+        playButton.backgroundColor = constant.buttonBackgroundColor
+        playButton.layer.cornerRadius = constant.largeButtonWidth / 2
+        playButton.addTarget(self, action: #selector(self.playTapped), for: .touchUpInside)
+        playButton.clipsToBounds = false
+        playButton.setImage(constant.playImage, for: [])
+    }
+    @objc func playTapped() {
+        shouldPlay.toggle()
+        changePlayerStatus(player: self.player, play: shouldPlay)
     }
 }
