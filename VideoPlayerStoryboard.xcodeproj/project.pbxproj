@@ -23,6 +23,12 @@
 		CEA488042B549EC900D8F6F3 /* Video.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEA488032B549EC900D8F6F3 /* Video.swift */; };
 		CEA488052B549EC900D8F6F3 /* Video.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEA488032B549EC900D8F6F3 /* Video.swift */; };
 		CEA488062B549EC900D8F6F3 /* Video.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEA488032B549EC900D8F6F3 /* Video.swift */; };
+		CEA488122B54A26F00D8F6F3 /* apiCall.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEA488112B54A26F00D8F6F3 /* apiCall.swift */; };
+		CEA488132B54A26F00D8F6F3 /* apiCall.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEA488112B54A26F00D8F6F3 /* apiCall.swift */; };
+		CEA488142B54A26F00D8F6F3 /* apiCall.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEA488112B54A26F00D8F6F3 /* apiCall.swift */; };
+		CEA488172B54A2EE00D8F6F3 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEA488162B54A2EE00D8F6F3 /* Constants.swift */; };
+		CEA488182B54A2EE00D8F6F3 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEA488162B54A2EE00D8F6F3 /* Constants.swift */; };
+		CEA488192B54A2EE00D8F6F3 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEA488162B54A2EE00D8F6F3 /* Constants.swift */; };
 		D081E31456447AF0F3EF48E3 /* Pods_VideoPlayerStoryboard_VideoPlayerStoryboardUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 87B4BEC6848B17FC9391C6BE /* Pods_VideoPlayerStoryboard_VideoPlayerStoryboardUITests.framework */; };
 		D5E77745CA93B9469BFAC946 /* Pods_VideoPlayerStoryboardTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6B32ABC386D67A7505A4CE8E /* Pods_VideoPlayerStoryboardTests.framework */; };
 /* End PBXBuildFile section */
@@ -75,6 +81,8 @@
 		CEA487FB2B549A9B00D8F6F3 /* VideoPlayerStoryboardUITests-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "VideoPlayerStoryboardUITests-Bridging-Header.h"; sourceTree = "<group>"; };
 		CEA487FC2B549A9C00D8F6F3 /* VideoPlayerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VideoPlayerViewController.swift; sourceTree = "<group>"; };
 		CEA488032B549EC900D8F6F3 /* Video.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Video.swift; sourceTree = "<group>"; };
+		CEA488112B54A26F00D8F6F3 /* apiCall.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = apiCall.swift; sourceTree = "<group>"; };
+		CEA488162B54A2EE00D8F6F3 /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		DCEB3EDBD7E31F3CE1710580 /* Pods-VideoPlayerStoryboard-VideoPlayerStoryboardUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-VideoPlayerStoryboard-VideoPlayerStoryboardUITests.release.xcconfig"; path = "Target Support Files/Pods-VideoPlayerStoryboard-VideoPlayerStoryboardUITests/Pods-VideoPlayerStoryboard-VideoPlayerStoryboardUITests.release.xcconfig"; sourceTree = "<group>"; };
 		E486809150780FE91CB1AF59 /* Pods-VideoPlayerStoryboardTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-VideoPlayerStoryboardTests.debug.xcconfig"; path = "Target Support Files/Pods-VideoPlayerStoryboardTests/Pods-VideoPlayerStoryboardTests.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -132,6 +140,8 @@
 		3AF67A9425A64DF400D360A7 /* VideoPlayerStoryboard */ = {
 			isa = PBXGroup;
 			children = (
+				CEA488152B54A2D500D8F6F3 /* Constants */,
+				CEA488102B54A25D00D8F6F3 /* Network */,
 				CEA488022B549EB300D8F6F3 /* Model */,
 				CEA487F82B549A7900D8F6F3 /* View */,
 				3AF67A9525A64DF400D360A7 /* AppDelegate.h */,
@@ -207,6 +217,22 @@
 				CEA488032B549EC900D8F6F3 /* Video.swift */,
 			);
 			path = Model;
+			sourceTree = "<group>";
+		};
+		CEA488102B54A25D00D8F6F3 /* Network */ = {
+			isa = PBXGroup;
+			children = (
+				CEA488112B54A26F00D8F6F3 /* apiCall.swift */,
+			);
+			path = Network;
+			sourceTree = "<group>";
+		};
+		CEA488152B54A2D500D8F6F3 /* Constants */ = {
+			isa = PBXGroup;
+			children = (
+				CEA488162B54A2EE00D8F6F3 /* Constants.swift */,
+			);
+			path = Constants;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -471,8 +497,10 @@
 				CEA488042B549EC900D8F6F3 /* Video.swift in Sources */,
 				3AF67A9725A64DF400D360A7 /* AppDelegate.m in Sources */,
 				CEA487FD2B549A9C00D8F6F3 /* VideoPlayerViewController.swift in Sources */,
+				CEA488122B54A26F00D8F6F3 /* apiCall.swift in Sources */,
 				3AF67AA825A64DF600D360A7 /* main.m in Sources */,
 				3AF67A9A25A64DF400D360A7 /* SceneDelegate.m in Sources */,
+				CEA488172B54A2EE00D8F6F3 /* Constants.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -480,8 +508,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				CEA488182B54A2EE00D8F6F3 /* Constants.swift in Sources */,
 				3AF67AB225A64DF600D360A7 /* VideoPlayerStoryboardTests.m in Sources */,
 				CEA488052B549EC900D8F6F3 /* Video.swift in Sources */,
+				CEA488132B54A26F00D8F6F3 /* apiCall.swift in Sources */,
 				CEA487FE2B549A9C00D8F6F3 /* VideoPlayerViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -490,8 +520,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				CEA488192B54A2EE00D8F6F3 /* Constants.swift in Sources */,
 				3AF67ABD25A64DF600D360A7 /* VideoPlayerStoryboardUITests.m in Sources */,
 				CEA488062B549EC900D8F6F3 /* Video.swift in Sources */,
+				CEA488142B54A26F00D8F6F3 /* apiCall.swift in Sources */,
 				CEA487FF2B549A9C00D8F6F3 /* VideoPlayerViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
