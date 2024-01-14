@@ -9,6 +9,9 @@ class VideoPlayerViewController: UIViewController {
     @IBOutlet weak var authorLabel: UILabel!
     @IBOutlet weak var detailTextView: UITextView!
     
+    // MARK: - Variables
+    var videoModel:[Video]?
+    
     // MARK: - View LifeCycle
     override func viewDidLoad() {
         super.viewDidLoad()

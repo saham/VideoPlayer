@@ -1,0 +1,39 @@
+import Foundation
+struct Video :Codable{
+    enum CodingKeys: String, CodingKey {
+        case id
+        case title
+        case hlsURL
+        case fullURL
+        case description
+        case author
+    }
+     init(from decoder: Decoder) throws {
+        let container = try decoder.container(keyedBy: CodingKeys.self)
+        id = try container.decodeIfPresent(String.self, forKey: .id)
+        title = try container.decodeIfPresent(String.self, forKey: .title)
+        hlsURL = try container.decodeIfPresent(String.self, forKey: .hlsURL)
+        fullURL = try container.decodeIfPresent(String.self, forKey: .fullURL)
+        description = try container.decodeIfPresent(String.self, forKey: .description)
+        author = try container.decodeIfPresent(Author.self, forKey: .author)
+    }
+    var id:String?
+    var title:String?
+    var hlsURL:String?
+    var fullURL:String?
+    var description:String?
+    var author: Author?
+}
+struct Author:Codable {
+    init(from decoder: Decoder) throws {
+       let container = try decoder.container(keyedBy: CodingKeys.self)
+       id = try container.decodeIfPresent(String.self, forKey: .id)
+       name = try container.decodeIfPresent(String.self, forKey: .name)
+   }
+   enum CodingKeys: String, CodingKey {
+       case id
+       case name
+   }
+   var id:String?
+   var name:String?
+}
