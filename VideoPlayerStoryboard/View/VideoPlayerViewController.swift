@@ -55,22 +55,17 @@ class VideoPlayerViewController: UIViewController {
             let task = URLSession.shared.dataTask(with: request) { data, response, error in
                 if let error = error {
                     print("\(error.localizedDescription)")
-                }
-                if let httpResponse = response as? HTTPURLResponse {
+                } else if let httpResponse = response as? HTTPURLResponse {
                     if httpResponse.statusCode != 200 {
                         if let hlsURLString = video?.hlsURL, let hlsUrl = URL(string: hlsURLString) {
                             self.player = AVPlayer(url: hlsUrl)
-                            self.playerLayer.player = self.player
-                            DispatchQueue.main.async {
-                                self.changePlayerStatus(player: self.player, play: self.shouldPlay)
-                            }
                         }
                     } else {
                         self.player = AVPlayer(url: videoURL)
-                        self.playerLayer.player = self.player
-                        DispatchQueue.main.async {
-                            self.changePlayerStatus(player: self.player, play: self.shouldPlay)
-                        }
+                    }
+                    self.playerLayer.player = self.player
+                    DispatchQueue.main.async {
+                        self.changePlayerStatus(player: self.player, play: self.shouldPlay)
                     }
                 }
             }
