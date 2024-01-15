@@ -39,8 +39,7 @@ class VideoPlayerViewController: UIViewController {
     }
     func setupPlayer(forVideo video:Video?) {
         if let urlString = video?.fullURL, let videoURL = URL(string: urlString) {
-            player = AVPlayer(url: videoURL)
-            playerLayer = AVPlayerLayer(player: player)
+            loadPlayer(forVideo: video)
             playerLayer.frame = playerView.bounds
             playerView.layer.addSublayer(playerLayer)
             setupPlayButton()
