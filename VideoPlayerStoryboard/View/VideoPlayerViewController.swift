@@ -39,6 +39,7 @@ class VideoPlayerViewController: UIViewController {
             }
         }
     }
+
     func setupPlayer(forVideo video:Video?) {
             loadPlayer(forVideo: video)
             playerLayer.frame = playerView.bounds
@@ -49,6 +50,7 @@ class VideoPlayerViewController: UIViewController {
             updateTextInformation(forVideo: video)
             changePlayerStatus(player: self.player, play: shouldPlay)
     }
+
     func loadPlayer(forVideo video:Video?) {
         if let urlString = video?.fullURL, let videoURL = URL(string: urlString) {
             let request = URLRequest(url: videoURL)
@@ -72,6 +74,7 @@ class VideoPlayerViewController: UIViewController {
             task.resume()
         }
     }
+
     func changePlayerStatus(player avPlayer:AVPlayer, play status:Bool) {
         if status {
             avPlayer.play()
@@ -81,6 +84,7 @@ class VideoPlayerViewController: UIViewController {
             playButton.setImage(constant.playImage, for: [])
         }
     }
+
     func updateTextInformation(forVideo video:Video?) {
         guard  let description = video?.description else { return }
         titleLabel.text = video?.title
@@ -88,6 +92,7 @@ class VideoPlayerViewController: UIViewController {
         let down = Down(markdownString: description)
         detailTextView.attributedText = try? down.toAttributedString()
     }
+
     func setupPlayButton() {
         playerView.addSubview(playButton)
         NSLayoutConstraint.activate([
@@ -105,10 +110,12 @@ class VideoPlayerViewController: UIViewController {
         playButton.clipsToBounds = false
         playButton.setImage(constant.playImage, for: [])
     }
+
     @objc func playTapped() {
         shouldPlay.toggle()
         changePlayerStatus(player: self.player, play: shouldPlay)
     }
+
     func setupNextButton() {
         playerView.addSubview(nextButton)
         NSLayoutConstraint.activate([
@@ -125,6 +132,7 @@ class VideoPlayerViewController: UIViewController {
         nextButton.setImage(constant.nextImage, for: [])
         nextButton.isEnabled = currentVideo != videoModel?.last
     }
+
     @objc func nextTapped() {
         if let playingVideo = currentVideo, currentVideo != videoModel?.last, let currentIndex = videoModel?.firstIndex(of: playingVideo) {
             currentVideo = videoModel?[currentIndex + 1]
@@ -155,6 +163,7 @@ class VideoPlayerViewController: UIViewController {
         previousButton.setImage(constant.previousImage, for: [])
         previousButton.isEnabled = currentVideo != videoModel?.first
     }
+
     @objc func previousTapped() {
         if let playingVideo = currentVideo, currentVideo != videoModel?.first, let currentIndex = videoModel?.firstIndex(of: playingVideo) {
             currentVideo = videoModel?[currentIndex - 1]
