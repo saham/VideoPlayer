@@ -16,9 +16,11 @@ class VideoPlayerViewController: UIViewController {
     var apiManager = apiCall.shared
     var player = AVPlayer()
     var shouldPlay = false
+    var currentVideo: Video?
     let playButton = UIButton(frame: .zero)
     let previousButton = UIButton(frame: .zero)
     let nextButton = UIButton(frame: .zero)
+    var playerLayer = AVPlayerLayer()
     
     // MARK: - View LifeCycle
     override func viewDidLoad() {
@@ -27,7 +29,8 @@ class VideoPlayerViewController: UIViewController {
             do {
                 if let model = try await apiManager.getAllVideos() {
                     self.videoModel = model
-                    setupPlayer(forVideo: self.videoModel?[1])
+                    currentVideo = videoModel?.first
+                    setupPlayer(forVideo: currentVideo)
                 }
             } catch let error {
                 print(error.localizedDescription)
@@ -35,16 +38,22 @@ class VideoPlayerViewController: UIViewController {
         }
     }
     func setupPlayer(forVideo video:Video?) {
-        guard let video = video else { return }
-        if let urlString = video.fullURL, let videoURL = URL(string: urlString) {
+        if let urlString = video?.fullURL, let videoURL = URL(string: urlString) {
             player = AVPlayer(url: videoURL)
-            let playerLayer = AVPlayerLayer(player: player)
+            playerLayer = AVPlayerLayer(player: player)
             playerLayer.frame = playerView.bounds
             playerView.layer.addSublayer(playerLayer)
             setupPlayButton()
             setupPreviousButton()
             setupNextButton()
             updateTextInformation(forVideo: video)
+            changePlayerStatus(player: self.player, play: shouldPlay)
+        }
+    }
+    func loadPlayer(forVideo video:Video?) {
+        if let urlString = video?.fullURL, let videoURL = URL(string: urlString) {
+            player = AVPlayer(url: videoURL)
+            playerLayer.player = player
             changePlayerStatus(player: self.player, play: shouldPlay)
         }
     }
@@ -58,9 +67,9 @@ class VideoPlayerViewController: UIViewController {
         }
     }
     func updateTextInformation(forVideo video:Video?) {
-        guard let video = video, let authorName = video.author?.name, let description = video.description else { return }
-        titleLabel.text = video.title
-        authorLabel.text = authorName
+        guard  let description = video?.description else { return }
+        titleLabel.text = video?.title
+        authorLabel.text = video?.author?.name
         let down = Down(markdownString: description)
         detailTextView.attributedText = try? down.toAttributedString()
     }
@@ -99,11 +108,21 @@ class VideoPlayerViewController: UIViewController {
         nextButton.addTarget(self, action: #selector(self.nextTapped), for: .touchUpInside)
         nextButton.clipsToBounds = false
         nextButton.setImage(constant.nextImage, for: [])
+        nextButton.isEnabled = currentVideo != videoModel?.last
     }
     @objc func nextTapped() {
-        
+        if let playingVideo = currentVideo, currentVideo != videoModel?.last, let currentIndex = videoModel?.firstIndex(of: playingVideo ) {
+            currentVideo = videoModel?[currentIndex + 1]
+            loadPlayer(forVideo: currentVideo)
+            updateVideoButtons()
+            updateTextInformation(forVideo: currentVideo)
+        }
     }
-    
+    func updateVideoButtons() {
+        nextButton.isEnabled = currentVideo != videoModel?.last
+        previousButton.isEnabled = currentVideo != videoModel?.first
+    }
+
     func setupPreviousButton() {
         playerView.addSubview(previousButton)
         NSLayoutConstraint.activate([
@@ -118,6 +137,7 @@ class VideoPlayerViewController: UIViewController {
         previousButton.addTarget(self, action: #selector(self.previousTapped), for: .touchUpInside)
         previousButton.clipsToBounds = false
         previousButton.setImage(constant.previousImage, for: [])
+        previousButton.isEnabled = currentVideo != videoModel?.first
     }
     @objc func previousTapped() {
         

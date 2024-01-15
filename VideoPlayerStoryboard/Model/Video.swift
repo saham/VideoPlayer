@@ -1,5 +1,5 @@
 import Foundation
-struct Video :Codable{
+struct Video :Codable, Equatable {
     enum CodingKeys: String, CodingKey {
         case id
         case title
@@ -24,7 +24,7 @@ struct Video :Codable{
     var description:String?
     var author: Author?
 }
-struct Author:Codable {
+struct Author:Codable,Equatable {
     init(from decoder: Decoder) throws {
        let container = try decoder.container(keyedBy: CodingKeys.self)
        id = try container.decodeIfPresent(String.self, forKey: .id)
