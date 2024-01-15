@@ -28,7 +28,6 @@ class VideoPlayerViewController: UIViewController {
                 if let model = try await apiManager.getAllVideos() {
                     self.videoModel = model
                     setupPlayer(forVideo: self.videoModel?[1])
-                    setupPlayButton()
                 }
             } catch let error {
                 print(error.localizedDescription)
@@ -41,7 +40,10 @@ class VideoPlayerViewController: UIViewController {
             player = AVPlayer(url: videoURL)
             let playerLayer = AVPlayerLayer(player: player)
             playerLayer.frame = playerView.bounds
-            self.playerView.layer.addSublayer(playerLayer)
+            playerView.layer.addSublayer(playerLayer)
+            setupPlayButton()
+            setupPreviousButton()
+            setupNextButton()
             changePlayerStatus(player: self.player, play: shouldPlay)
         }
     }
@@ -74,5 +76,42 @@ class VideoPlayerViewController: UIViewController {
     @objc func playTapped() {
         shouldPlay.toggle()
         changePlayerStatus(player: self.player, play: shouldPlay)
+    }
+    func setupNextButton() {
+        playerView.addSubview(nextButton)
+        NSLayoutConstraint.activate([
+            nextButton.widthAnchor.constraint(equalToConstant: constant.smallButtonWidth),
+            nextButton.heightAnchor.constraint(equalToConstant: constant.smallButtonWidth),
+            nextButton.leadingAnchor.constraint(equalTo: playButton.trailingAnchor,constant: 32),
+            nextButton.centerYAnchor.constraint(equalTo: playButton.centerYAnchor)
+        ])
+        nextButton.translatesAutoresizingMaskIntoConstraints = false
+        nextButton.backgroundColor = constant.buttonBackgroundColor
+        nextButton.layer.cornerRadius = constant.smallButtonWidth / 2
+        nextButton.addTarget(self, action: #selector(self.nextTapped), for: .touchUpInside)
+        nextButton.clipsToBounds = false
+        nextButton.setImage(constant.nextImage, for: [])
+    }
+    @objc func nextTapped() {
+        
+    }
+    
+    func setupPreviousButton() {
+        playerView.addSubview(previousButton)
+        NSLayoutConstraint.activate([
+            previousButton.widthAnchor.constraint(equalToConstant: constant.smallButtonWidth),
+            previousButton.heightAnchor.constraint(equalToConstant: constant.smallButtonWidth),
+            previousButton.trailingAnchor.constraint(equalTo: playButton.leadingAnchor,constant: -32),
+            previousButton.centerYAnchor.constraint(equalTo: playButton.centerYAnchor)
+        ])
+        previousButton.translatesAutoresizingMaskIntoConstraints = false
+        previousButton.backgroundColor = constant.buttonBackgroundColor
+        previousButton.layer.cornerRadius = constant.smallButtonWidth / 2
+        previousButton.addTarget(self, action: #selector(self.previousTapped), for: .touchUpInside)
+        previousButton.clipsToBounds = false
+        previousButton.setImage(constant.previousImage, for: [])
+    }
+    @objc func previousTapped() {
+        
     }
 }
