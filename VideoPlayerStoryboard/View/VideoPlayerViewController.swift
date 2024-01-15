@@ -49,9 +49,30 @@ class VideoPlayerViewController: UIViewController {
     }
     func loadPlayer(forVideo video:Video?) {
         if let urlString = video?.fullURL, let videoURL = URL(string: urlString) {
-            player = AVPlayer(url: videoURL)
-            playerLayer.player = player
-            changePlayerStatus(player: self.player, play: shouldPlay)
+            let request = URLRequest(url: videoURL)
+            let task = URLSession.shared.dataTask(with: request) { data, response, error in
+                if let error = error {
+                    print("\(error.localizedDescription)")
+                }
+                if let httpResponse = response as? HTTPURLResponse {
+                    if httpResponse.statusCode != 200 {
+                        if let hlsURLString = video?.hlsURL, let hlsUrl = URL(string: hlsURLString) {
+                            self.player = AVPlayer(url: hlsUrl)
+                            self.playerLayer.player = self.player
+                            DispatchQueue.main.async {
+                                self.changePlayerStatus(player: self.player, play: self.shouldPlay)
+                            }
+                        }
+                    } else {
+                        self.player = AVPlayer(url: videoURL)
+                        self.playerLayer.player = self.player
+                        DispatchQueue.main.async {
+                            self.changePlayerStatus(player: self.player, play: self.shouldPlay)
+                        }
+                    }
+                }
+            }
+            task.resume()
         }
     }
     func changePlayerStatus(player avPlayer:AVPlayer, play status:Bool) {
