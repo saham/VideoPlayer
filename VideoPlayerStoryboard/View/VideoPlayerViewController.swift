@@ -141,6 +141,11 @@ class VideoPlayerViewController: UIViewController {
         previousButton.isEnabled = currentVideo != videoModel?.first
     }
     @objc func previousTapped() {
-        
+        if let playingVideo = currentVideo, currentVideo != videoModel?.first, let currentIndex = videoModel?.firstIndex(of: playingVideo) {
+            currentVideo = videoModel?[currentIndex - 1]
+            loadPlayer(forVideo: currentVideo)
+            updateVideoButtons()
+            updateTextInformation(forVideo: currentVideo)
+        }
     }
 }
