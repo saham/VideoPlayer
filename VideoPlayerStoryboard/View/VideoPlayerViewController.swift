@@ -118,6 +118,7 @@ class VideoPlayerViewController: UIViewController {
             updateTextInformation(forVideo: currentVideo)
         }
     }
+
     func updateVideoButtons() {
         nextButton.isEnabled = currentVideo != videoModel?.last
         previousButton.isEnabled = currentVideo != videoModel?.first
