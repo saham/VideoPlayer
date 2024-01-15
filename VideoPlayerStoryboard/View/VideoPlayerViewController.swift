@@ -44,6 +44,7 @@ class VideoPlayerViewController: UIViewController {
             setupPlayButton()
             setupPreviousButton()
             setupNextButton()
+            updateTextInformation(forVideo: video)
             changePlayerStatus(player: self.player, play: shouldPlay)
         }
     }
@@ -55,6 +56,13 @@ class VideoPlayerViewController: UIViewController {
             avPlayer.pause()
             playButton.setImage(constant.playImage, for: [])
         }
+    }
+    func updateTextInformation(forVideo video:Video?) {
+        guard let video = video, let authorName = video.author?.name, let description = video.description else { return }
+        titleLabel.text = video.title
+        authorLabel.text = authorName
+        let down = Down(markdownString: description)
+        detailTextView.attributedText = try? down.toAttributedString()
     }
     func setupPlayButton() {
         playerView.addSubview(playButton)
