@@ -29,8 +29,10 @@ class VideoPlayerViewController: UIViewController {
             do {
                 if let model = try await apiManager.getAllVideos() {
                     self.videoModel = model
-                    // JSON does not have date key to sort. title is used to implement the sort
-                    videoModel = videoModel?.sorted(by: {$0.title ?? "" < $1.title ?? ""})
+                    videoModel = videoModel?.sorted(by: {
+                        guard let firstDate = $0.formattedDate, let secondDate = $1.formattedDate else { return false }
+                       return firstDate  < secondDate
+                    })
                     currentVideo = videoModel?.first
                     setupPlayer(forVideo: currentVideo)
                 }

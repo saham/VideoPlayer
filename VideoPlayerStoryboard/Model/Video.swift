@@ -6,6 +6,7 @@ struct Video :Codable, Equatable {
         case hlsURL
         case fullURL
         case description
+        case publishedAt
         case author
     }
      init(from decoder: Decoder) throws {
@@ -15,6 +16,7 @@ struct Video :Codable, Equatable {
         hlsURL = try container.decodeIfPresent(String.self, forKey: .hlsURL)
         fullURL = try container.decodeIfPresent(String.self, forKey: .fullURL)
         description = try container.decodeIfPresent(String.self, forKey: .description)
+        publishedAt = try container.decodeIfPresent(String.self, forKey: .publishedAt)
         author = try container.decodeIfPresent(Author.self, forKey: .author)
     }
     var id:String?
@@ -22,7 +24,16 @@ struct Video :Codable, Equatable {
     var hlsURL:String?
     var fullURL:String?
     var description:String?
+    var publishedAt:String?
     var author: Author?
+    var formattedDate:Date? {
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "yyyy-MM-dd'T'HH:mm:ss.SSSZ"
+        if let publishedDate = publishedAt {
+            return dateFormatter.date(from: publishedDate)
+        }
+        return nil
+    }
 }
 struct Author:Codable, Equatable {
     init(from decoder: Decoder) throws {
