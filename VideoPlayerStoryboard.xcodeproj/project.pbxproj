@@ -29,6 +29,7 @@
 		CEA488172B54A2EE00D8F6F3 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEA488162B54A2EE00D8F6F3 /* Constants.swift */; };
 		CEA488182B54A2EE00D8F6F3 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEA488162B54A2EE00D8F6F3 /* Constants.swift */; };
 		CEA488192B54A2EE00D8F6F3 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEA488162B54A2EE00D8F6F3 /* Constants.swift */; };
+		CEA4881F2B54D38500D8F6F3 /* test.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEA4881E2B54D38500D8F6F3 /* test.swift */; };
 		D081E31456447AF0F3EF48E3 /* Pods_VideoPlayerStoryboard_VideoPlayerStoryboardUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 87B4BEC6848B17FC9391C6BE /* Pods_VideoPlayerStoryboard_VideoPlayerStoryboardUITests.framework */; };
 		D5E77745CA93B9469BFAC946 /* Pods_VideoPlayerStoryboardTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6B32ABC386D67A7505A4CE8E /* Pods_VideoPlayerStoryboardTests.framework */; };
 /* End PBXBuildFile section */
@@ -83,6 +84,7 @@
 		CEA488032B549EC900D8F6F3 /* Video.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Video.swift; sourceTree = "<group>"; };
 		CEA488112B54A26F00D8F6F3 /* apiCall.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = apiCall.swift; sourceTree = "<group>"; };
 		CEA488162B54A2EE00D8F6F3 /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
+		CEA4881E2B54D38500D8F6F3 /* test.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = test.swift; sourceTree = "<group>"; };
 		DCEB3EDBD7E31F3CE1710580 /* Pods-VideoPlayerStoryboard-VideoPlayerStoryboardUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-VideoPlayerStoryboard-VideoPlayerStoryboardUITests.release.xcconfig"; path = "Target Support Files/Pods-VideoPlayerStoryboard-VideoPlayerStoryboardUITests/Pods-VideoPlayerStoryboard-VideoPlayerStoryboardUITests.release.xcconfig"; sourceTree = "<group>"; };
 		E486809150780FE91CB1AF59 /* Pods-VideoPlayerStoryboardTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-VideoPlayerStoryboardTests.debug.xcconfig"; path = "Target Support Files/Pods-VideoPlayerStoryboardTests/Pods-VideoPlayerStoryboardTests.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -164,6 +166,7 @@
 			children = (
 				3AF67AB125A64DF600D360A7 /* VideoPlayerStoryboardTests.m */,
 				3AF67AB325A64DF600D360A7 /* Info.plist */,
+				CEA4881E2B54D38500D8F6F3 /* test.swift */,
 			);
 			path = VideoPlayerStoryboardTests;
 			sourceTree = "<group>";
@@ -509,6 +512,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				CEA488182B54A2EE00D8F6F3 /* Constants.swift in Sources */,
+				CEA4881F2B54D38500D8F6F3 /* test.swift in Sources */,
 				3AF67AB225A64DF600D360A7 /* VideoPlayerStoryboardTests.m in Sources */,
 				CEA488052B549EC900D8F6F3 /* Video.swift in Sources */,
 				CEA488132B54A26F00D8F6F3 /* apiCall.swift in Sources */,
