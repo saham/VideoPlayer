@@ -24,7 +24,7 @@ struct Video :Codable, Equatable {
     var description:String?
     var author: Author?
 }
-struct Author:Codable,Equatable {
+struct Author:Codable, Equatable {
     init(from decoder: Decoder) throws {
        let container = try decoder.container(keyedBy: CodingKeys.self)
        id = try container.decodeIfPresent(String.self, forKey: .id)
