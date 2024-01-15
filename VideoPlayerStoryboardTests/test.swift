@@ -22,7 +22,7 @@ final class test: XCTestCase {
         let apiManager = VideoPlayerViewController.apiManager
         XCTAssertTrue(apiManager.urlString == "http://localhost:4000/videos","apiCall points to a wrong URL")
         XCTAssertTrue(constant.backendURL == "http://localhost:4000/videos" , "Check Backend URL")
-        XCTAssertNil(VideoPlayerViewController.videoModel,"You should start with nil video")
+        XCTAssertNil(VideoPlayerViewController.videoModel,"You should start with a nil video list")
        
     }
 
