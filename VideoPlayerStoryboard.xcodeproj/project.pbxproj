@@ -17,7 +17,9 @@
 		3AF67AB225A64DF600D360A7 /* VideoPlayerStoryboardTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 3AF67AB125A64DF600D360A7 /* VideoPlayerStoryboardTests.m */; };
 		3AF67ABD25A64DF600D360A7 /* VideoPlayerStoryboardUITests.m in Sources */ = {isa = PBXBuildFile; fileRef = 3AF67ABC25A64DF600D360A7 /* VideoPlayerStoryboardUITests.m */; };
 		4F3D9F5E524F29E25035D558 /* Pods_VideoPlayerStoryboard.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 768296C2353A31C12A5C1458 /* Pods_VideoPlayerStoryboard.framework */; };
+		CE4DE2762B55A44B0066EE5A /* String.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE5D47312B55891200987CF9 /* String.swift */; };
 		CE5D47322B55891200987CF9 /* String.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE5D47312B55891200987CF9 /* String.swift */; };
+		CE5D47332B55A32D00987CF9 /* String.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE5D47312B55891200987CF9 /* String.swift */; };
 		CEA487FD2B549A9C00D8F6F3 /* VideoPlayerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEA487FC2B549A9C00D8F6F3 /* VideoPlayerViewController.swift */; };
 		CEA487FE2B549A9C00D8F6F3 /* VideoPlayerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEA487FC2B549A9C00D8F6F3 /* VideoPlayerViewController.swift */; };
 		CEA487FF2B549A9C00D8F6F3 /* VideoPlayerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEA487FC2B549A9C00D8F6F3 /* VideoPlayerViewController.swift */; };
@@ -527,6 +529,7 @@
 				CEA4881F2B54D38500D8F6F3 /* videoPlayerStoryboardTest.swift in Sources */,
 				3AF67AB225A64DF600D360A7 /* VideoPlayerStoryboardTests.m in Sources */,
 				CEA488052B549EC900D8F6F3 /* Video.swift in Sources */,
+				CE5D47332B55A32D00987CF9 /* String.swift in Sources */,
 				CEA488132B54A26F00D8F6F3 /* apiCall.swift in Sources */,
 				CEA487FE2B549A9C00D8F6F3 /* VideoPlayerViewController.swift in Sources */,
 			);
@@ -536,6 +539,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				CE4DE2762B55A44B0066EE5A /* String.swift in Sources */,
 				CEA488192B54A2EE00D8F6F3 /* Constants.swift in Sources */,
 				3AF67ABD25A64DF600D360A7 /* VideoPlayerStoryboardUITests.m in Sources */,
 				CEA488062B549EC900D8F6F3 /* Video.swift in Sources */,
