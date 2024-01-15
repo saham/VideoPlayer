@@ -38,7 +38,6 @@ class VideoPlayerViewController: UIViewController {
         }
     }
     func setupPlayer(forVideo video:Video?) {
-        if let urlString = video?.fullURL, let videoURL = URL(string: urlString) {
             loadPlayer(forVideo: video)
             playerLayer.frame = playerView.bounds
             playerView.layer.addSublayer(playerLayer)
@@ -47,7 +46,6 @@ class VideoPlayerViewController: UIViewController {
             setupNextButton()
             updateTextInformation(forVideo: video)
             changePlayerStatus(player: self.player, play: shouldPlay)
-        }
     }
     func loadPlayer(forVideo video:Video?) {
         if let urlString = video?.fullURL, let videoURL = URL(string: urlString) {
