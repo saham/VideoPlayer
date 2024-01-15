@@ -15,4 +15,5 @@ enum constant {
     static let buttonBoarderColor = UIColor.black.cgColor
     static let buttonBorderWidth = CGFloat(0.8)
     static let buttonBackgroundColor:UIColor = .white
+    static let dateFormat = "yyyy-MM-dd'T'HH:mm:ss.SSSZ"
 }

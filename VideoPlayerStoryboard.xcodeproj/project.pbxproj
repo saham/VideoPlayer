@@ -17,6 +17,7 @@
 		3AF67AB225A64DF600D360A7 /* VideoPlayerStoryboardTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 3AF67AB125A64DF600D360A7 /* VideoPlayerStoryboardTests.m */; };
 		3AF67ABD25A64DF600D360A7 /* VideoPlayerStoryboardUITests.m in Sources */ = {isa = PBXBuildFile; fileRef = 3AF67ABC25A64DF600D360A7 /* VideoPlayerStoryboardUITests.m */; };
 		4F3D9F5E524F29E25035D558 /* Pods_VideoPlayerStoryboard.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 768296C2353A31C12A5C1458 /* Pods_VideoPlayerStoryboard.framework */; };
+		CE5D47322B55891200987CF9 /* String.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE5D47312B55891200987CF9 /* String.swift */; };
 		CEA487FD2B549A9C00D8F6F3 /* VideoPlayerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEA487FC2B549A9C00D8F6F3 /* VideoPlayerViewController.swift */; };
 		CEA487FE2B549A9C00D8F6F3 /* VideoPlayerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEA487FC2B549A9C00D8F6F3 /* VideoPlayerViewController.swift */; };
 		CEA487FF2B549A9C00D8F6F3 /* VideoPlayerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEA487FC2B549A9C00D8F6F3 /* VideoPlayerViewController.swift */; };
@@ -77,6 +78,7 @@
 		87B4BEC6848B17FC9391C6BE /* Pods_VideoPlayerStoryboard_VideoPlayerStoryboardUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_VideoPlayerStoryboard_VideoPlayerStoryboardUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		A732F740FC0A1FE82C10B989 /* Pods-VideoPlayerStoryboard-VideoPlayerStoryboardUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-VideoPlayerStoryboard-VideoPlayerStoryboardUITests.debug.xcconfig"; path = "Target Support Files/Pods-VideoPlayerStoryboard-VideoPlayerStoryboardUITests/Pods-VideoPlayerStoryboard-VideoPlayerStoryboardUITests.debug.xcconfig"; sourceTree = "<group>"; };
 		B9862A0D2E6EEBB11B37AD7A /* Pods-VideoPlayerStoryboard.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-VideoPlayerStoryboard.debug.xcconfig"; path = "Target Support Files/Pods-VideoPlayerStoryboard/Pods-VideoPlayerStoryboard.debug.xcconfig"; sourceTree = "<group>"; };
+		CE5D47312B55891200987CF9 /* String.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = String.swift; sourceTree = "<group>"; };
 		CEA487F92B549A9B00D8F6F3 /* VideoPlayerStoryboard-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "VideoPlayerStoryboard-Bridging-Header.h"; sourceTree = "<group>"; };
 		CEA487FA2B549A9B00D8F6F3 /* VideoPlayerStoryboardTests-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "VideoPlayerStoryboardTests-Bridging-Header.h"; sourceTree = "<group>"; };
 		CEA487FB2B549A9B00D8F6F3 /* VideoPlayerStoryboardUITests-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "VideoPlayerStoryboardUITests-Bridging-Header.h"; sourceTree = "<group>"; };
@@ -142,6 +144,7 @@
 		3AF67A9425A64DF400D360A7 /* VideoPlayerStoryboard */ = {
 			isa = PBXGroup;
 			children = (
+				CE5D47302B5588F200987CF9 /* Extension */,
 				CEA488152B54A2D500D8F6F3 /* Constants */,
 				CEA488102B54A25D00D8F6F3 /* Network */,
 				CEA488022B549EB300D8F6F3 /* Model */,
@@ -201,6 +204,14 @@
 				6B32ABC386D67A7505A4CE8E /* Pods_VideoPlayerStoryboardTests.framework */,
 			);
 			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		CE5D47302B5588F200987CF9 /* Extension */ = {
+			isa = PBXGroup;
+			children = (
+				CE5D47312B55891200987CF9 /* String.swift */,
+			);
+			path = Extension;
 			sourceTree = "<group>";
 		};
 		CEA487F82B549A7900D8F6F3 /* View */ = {
@@ -499,6 +510,7 @@
 				3AF67A9D25A64DF400D360A7 /* ViewController.m in Sources */,
 				CEA488042B549EC900D8F6F3 /* Video.swift in Sources */,
 				3AF67A9725A64DF400D360A7 /* AppDelegate.m in Sources */,
+				CE5D47322B55891200987CF9 /* String.swift in Sources */,
 				CEA487FD2B549A9C00D8F6F3 /* VideoPlayerViewController.swift in Sources */,
 				CEA488122B54A26F00D8F6F3 /* apiCall.swift in Sources */,
 				3AF67AA825A64DF600D360A7 /* main.m in Sources */,

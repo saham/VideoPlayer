@@ -26,14 +26,6 @@ struct Video :Codable, Equatable {
     var description:String?
     var publishedAt:String?
     var author: Author?
-    var formattedDate:Date? {
-        let dateFormatter = DateFormatter()
-        dateFormatter.dateFormat = "yyyy-MM-dd'T'HH:mm:ss.SSSZ"
-        if let publishedDate = publishedAt {
-            return dateFormatter.date(from: publishedDate)
-        }
-        return nil
-    }
 }
 struct Author:Codable, Equatable {
     init(from decoder: Decoder) throws {

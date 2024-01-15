@@ -30,8 +30,8 @@ class VideoPlayerViewController: UIViewController {
                 if let model = try await apiManager.getAllVideos() {
                     self.videoModel = model
                     videoModel = videoModel?.sorted(by: {
-                        guard let firstDate = $0.formattedDate, let secondDate = $1.formattedDate else { return false }
-                       return firstDate  < secondDate
+                        guard let firstDate = $0.publishedAt?.toDate, let secondDate = $1.publishedAt?.toDate else { return false }
+                        return firstDate  < secondDate
                     })
                     currentVideo = videoModel?.first
                     setupPlayer(forVideo: currentVideo)
