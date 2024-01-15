@@ -29,7 +29,7 @@ class VideoPlayerViewController: UIViewController {
             do {
                 if let model = try await apiManager.getAllVideos() {
                     self.videoModel = model
-                    // JSON does not have date to sort. Title is used to implement the sort
+                    // JSON does not have date key to sort. title is used to implement the sort
                     videoModel = videoModel?.sorted(by: {$0.title ?? "" < $1.title ?? ""})
                     currentVideo = videoModel?.first
                     setupPlayer(forVideo: currentVideo)
@@ -40,15 +40,16 @@ class VideoPlayerViewController: UIViewController {
         }
     }
 
+    // MARK: - Player
     func setupPlayer(forVideo video:Video?) {
-            loadPlayer(forVideo: video)
-            playerLayer.frame = playerView.bounds
-            playerView.layer.addSublayer(playerLayer)
-            setupPlayButton()
-            setupPreviousButton()
-            setupNextButton()
-            updateTextInformation(forVideo: video)
-            changePlayerStatus(player: self.player, play: shouldPlay)
+        loadPlayer(forVideo: video)
+        playerLayer.frame = playerView.bounds
+        playerView.layer.addSublayer(playerLayer)
+        setupPlayButton()
+        setupPreviousButton()
+        setupNextButton()
+        updateTextInformation(forVideo: video)
+        changePlayerStatus(player: self.player, play: shouldPlay)
     }
 
     func loadPlayer(forVideo video:Video?) {
@@ -85,12 +86,19 @@ class VideoPlayerViewController: UIViewController {
         }
     }
 
+    // MARK: - Video Information
     func updateTextInformation(forVideo video:Video?) {
         guard  let description = video?.description else { return }
         titleLabel.text = video?.title
         authorLabel.text = video?.author?.name
         let down = Down(markdownString: description)
         detailTextView.attributedText = try? down.toAttributedString()
+    }
+
+    // MARK: - Video Controllers
+    func updateVideoButtons() {
+        nextButton.isEnabled = currentVideo != videoModel?.last
+        previousButton.isEnabled = currentVideo != videoModel?.first
     }
 
     func setupPlayButton() {
@@ -140,11 +148,6 @@ class VideoPlayerViewController: UIViewController {
             updateVideoButtons()
             updateTextInformation(forVideo: currentVideo)
         }
-    }
-
-    func updateVideoButtons() {
-        nextButton.isEnabled = currentVideo != videoModel?.last
-        previousButton.isEnabled = currentVideo != videoModel?.first
     }
 
     func setupPreviousButton() {
