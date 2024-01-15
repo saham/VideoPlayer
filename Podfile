@@ -15,3 +15,9 @@ target 'VideoPlayerStoryboard' do
   end
 
 end
+        if let playingVideo = currentVideo, currentVideo != videoModel?.first, let currentIndex = videoModel?.firstIndex(of: playingVideo) {
+            currentVideo = videoModel?[currentIndex - 1]
+            loadPlayer(forVideo: currentVideo)
+            updateVideoButtons()
+            updateTextInformation(forVideo: currentVideo)
+        }
